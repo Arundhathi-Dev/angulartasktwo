@@ -1,0 +1,56 @@
+<div class="abc" style = "margin-top: 250px; margin-bottom: 20%">
+    <nav class="navbar navbar-light bg-light" style = "min-height: 122px;">
+        <a class="navbar-brand" href="#" >
+          <img src="./assets/img/imagelogo.png" width="220" height="95"  alt="">
+        </a>
+    </nav>
+    <nav>
+        <div class = "nav-wrapper #1a237e indigo darken-4">
+            <a href="/" class="brand-logo center">Welcome to Admin Dashboard!</a>
+        </div>
+    </nav>
+<div *ngIf= "items?.length >0;else noItems">
+    <ul *ngFor="let item of items"class = "collection">
+        <li  class="collection-item"><strong>{{item.title}}:</strong>
+            {{item.description}}
+            <br>
+            <strong>{{item.subject}}</strong>
+            {{item.reply}}
+            <a  class = "secondary-content">
+                <i (click)="replyItem(item)" class = "fa fa-pencil"></i>
+                <i *ngIf="replyState && itemToReply.id == item.id" (click)="clearreplyState()" class = "fa fa-compress"></i>
+    
+            
+            </a> 
+            <div *ngIf="replyState && itemToReply.id == item.id">
+            <form (ngSubmit)="replyItem(item)">
+                <div class="row">
+                    
+                        <div class="input-field col s6">
+                            <input type="text" placeholder="Add Subject" [(ngModel)]= "item.subject" name="subject">
+                            <br>
+                        </div>
+                    
+                    <div class="input-field col s6">
+                        <input type="text" placeholder="Add Reply" [(ngModel)]= "item.reply" name="reply">
+                    </div>
+                    
+                <input type="submit" value="Reply" class="btn orange">
+                    </div>
+
+
+            </form>
+            </div>
+
+
+        
+    </li>
+    </ul>
+</div>
+<ng-template #noItems>
+    
+    <h5>There are no items to list</h5>
+</ng-template>
+</div>
+<router-outlet></router-outlet>
+

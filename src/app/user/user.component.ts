@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class AppComponent {
-  title = 'angularapp';
+export class UserComponent implements OnInit {
   email: string;
   password: string;
 
@@ -27,4 +26,7 @@ export class AppComponent {
   logout() {
     this.authService.logout();
   }
+  ngOnInit(): void {
+  }
+
 }
